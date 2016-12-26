@@ -1,0 +1,12 @@
+# I'm justing getting used to git, so I'm experimenting with .gitignore. 
+# Realistically, it'd be easier to just say which files to ignore, since there's only 2, but this is for the sake of learning!
+
+
+# Ignore everything
+*
+
+# Except the important stuff
+!.gitignore
+!*.c
+!makefile
+!README.md
