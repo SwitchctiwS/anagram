@@ -8,7 +8,8 @@
 
 #define LENGTH 10000
 
-char* read_and_sort_string(unsigned int buffer);
+char* input(unsigned int buffer);
+char* sort(char* str);
 unsigned int find_same_chars(char* arr_a, char* arr_b);
 unsigned int deletions(char* arr_a, char* arr_b);
 bool binary_search(char* arr, char key, unsigned int min_index, unsigned int max_index);
@@ -17,8 +18,11 @@ int compare(const void* a, const void* b);
 int main(void) {
     int count;
 
-    char* arr_a = read_and_sort_string(LENGTH);
-    char* arr_b = read_and_sort_string(LENGTH);
+    char* arr_a = input(LENGTH);
+    char* arr_b = input(LENGTH);
+
+    arr_a = sort(arr_a);
+    arr_b = sort(arr_b);
 
     count = deletions(arr_a, arr_b);
 
@@ -48,7 +52,7 @@ unsigned int find_same_chars(char* arr_a, char* arr_b) {
     return count;
 }
 
-char* read_and_sort_string(unsigned int buffer) {
+char* input(unsigned int buffer) {
     unsigned int i;
     char c;
     char* str = malloc(buffer * sizeof *str);
@@ -64,7 +68,11 @@ char* read_and_sort_string(unsigned int buffer) {
     }
     str[i] = '\0';
 
-    qsort(str, strlen(str), sizeof(char), compare);
+    return str;
+}
+
+char* sort(char* str) {
+    qsort(str, strlen(str), sizeof str[0], compare);
 
     return str;
 }
